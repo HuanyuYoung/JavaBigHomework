@@ -4,26 +4,43 @@
  * and open the template in the editor.
  */
 package catchtigerchess;
-
 import java.awt.Color;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import mouseclick.ChessClick;
 /**
  *
  * @author heyanbai
  */
 public class ChessWindow extends JFrame {
     
-    static public ChessBoarder chessBoarder;
+    public static ChessBoarder chessBoarder;
+    private static String PlayerNow;
+    ChessBoardCanvas chessCanvas;
     /**
      * Creates new form ChessWindow
      */
     public ChessWindow() {
         initComponents();
+        PlayerNow = new String("Tiger");
         chessBoarder = new ChessBoarder();
+        
         this.setTitle("CatchTigerChess");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
+        chessCanvas = new ChessBoardCanvas();
+        chessCanvas.setBounds(0, 0, 500, 700);
         
+        chessCanvas.repaint();
+        chessCanvas.addMouseListener(new ChessClick());
+        gameBoard.add(chessCanvas);
+    }
+    public static void setPlayer(){
+        if(PlayerNow == "Tiger") PlayerNow = "Dog";
+        else PlayerNow = "Tiger";
+    }
+    public static String getPlayer(){
+        return PlayerNow;
     }
     public static ChessPieces[][] getChessPieces(){
         return chessBoarder.getChessPieces();
@@ -37,7 +54,7 @@ public class ChessWindow extends JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        gameBoard = new ChessBoardCanvas();
+        gameBoard = new JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 

@@ -7,12 +7,19 @@ package catchtigerchess;
 import java.awt.Point;
 import java.lang.Math;
 import catchtigerchess.ChessWindow;
+import java.awt.Toolkit;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.image.ImageObserver;
+
 /**
  *
  * @author heyanbai
  */
 public class ChessBoarder {
     private static ChessPieces[][] chessPieces;
+    
+    private Point[] selectPoint;
     private boolean isRealDes(int x,int y){
         if(x>=0&&x<=4&&y>=2&&y<=6) return true;
         else if(y == 0 && x == 2) return true;
@@ -20,6 +27,7 @@ public class ChessBoarder {
         else return false;
     }
     private boolean isInDistance(Point src, Point des){
+        System.out.println("Hello");
         int dx = Math.abs(src.x - des.x);
         int dy = Math.abs(src.y - des.y);
         if(dx == 1 && dy == 1) return true;
@@ -27,8 +35,17 @@ public class ChessBoarder {
         else if(dy == 0 && dx == 1) return true;
         else return false;
     }
+    public Point getPoint(int id){
+        return selectPoint[id];
+    }
+    public void setPoint(int id,Point p){
+        selectPoint[id] = p;
+    }
     public ChessBoarder(){
         chessPieces = new ChessPieces[7][5];
+        selectPoint = new Point[2];
+        selectPoint[0] = null;
+        selectPoint[1] = null;
         for (int i = 0; i < 7; i++) {
             for (int j = 0; j < 5; j++) {
                 chessPieces[i][j] = null;
@@ -53,9 +70,10 @@ public class ChessBoarder {
         chessPieces[6][4] = new ChessPieces(16);
     }
     /**
-    * 
+    * Move Chess Piece
     * @param src Source Point
     * @param des Destination Point
+    * @return Returns true if successful, otherwise returns false
     */
     public boolean pieceMove(Point src, Point des){
         if (chessPieces[src.y][src.x] == null){

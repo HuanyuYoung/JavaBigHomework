@@ -17,6 +17,7 @@ import java.awt.Point;
 public class ChessBoardCanvas extends javax.swing.JPanel {
 
     Image backgroundImage;
+    ChessBoarder chessBoarder;
     int leftUpX;
     int leftUpY;
     int rightDownX;
@@ -29,7 +30,9 @@ public class ChessBoardCanvas extends javax.swing.JPanel {
         initComponents();
         backgroundImage = Toolkit.getDefaultToolkit().getImage("src/images/gameBoard.jpg");
     }
-    
+    public void setData(ChessBoarder chessBoader){
+        this.chessBoarder = chessBoader;
+    }
     
     @Override
     public void paintComponent(Graphics g){
