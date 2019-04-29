@@ -36,7 +36,8 @@ public class ChessWindow extends JFrame {
         gameBoard.add(chessCanvas);
     }
     public static void setPlayer(){
-        if(PlayerNow == "Tiger") PlayerNow = "Dog";
+        System.out.println(PlayerNow);
+        if(PlayerNow.equals("Tiger")) PlayerNow = "Dog";
         else PlayerNow = "Tiger";
     }
     public static String getPlayer(){
@@ -59,17 +60,17 @@ public class ChessWindow extends JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         gameBoard.setBackground(new java.awt.Color(60, 255, 65));
-        gameBoard.setPreferredSize(new java.awt.Dimension(500, 700));
+        gameBoard.setPreferredSize(new java.awt.Dimension(375, 525));
 
         javax.swing.GroupLayout gameBoardLayout = new javax.swing.GroupLayout(gameBoard);
         gameBoard.setLayout(gameBoardLayout);
         gameBoardLayout.setHorizontalGroup(
             gameBoardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGap(0, 375, Short.MAX_VALUE)
         );
         gameBoardLayout.setVerticalGroup(
             gameBoardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 700, Short.MAX_VALUE)
+            .addGap(0, 525, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -77,16 +78,16 @@ public class ChessWindow extends JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(369, Short.MAX_VALUE)
+                .addContainerGap(330, Short.MAX_VALUE)
                 .addComponent(gameBoard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(gameBoard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();

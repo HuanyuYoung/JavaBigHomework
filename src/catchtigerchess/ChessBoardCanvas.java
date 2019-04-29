@@ -17,6 +17,7 @@ import java.awt.Point;
 public class ChessBoardCanvas extends javax.swing.JPanel {
 
     Image backgroundImage;
+    Image selectFrame;
     ChessBoarder chessBoarder;
     int leftUpX;
     int leftUpY;
@@ -29,6 +30,7 @@ public class ChessBoardCanvas extends javax.swing.JPanel {
     public ChessBoardCanvas() {
         initComponents();
         backgroundImage = Toolkit.getDefaultToolkit().getImage("src/images/gameBoard.jpg");
+        selectFrame = Toolkit.getDefaultToolkit().getImage("src/images/frame.png");
     }
     public void setData(ChessBoarder chessBoader){
         this.chessBoarder = chessBoader;
@@ -38,7 +40,7 @@ public class ChessBoardCanvas extends javax.swing.JPanel {
     public void paintComponent(Graphics g){
         super.paintChildren(g);
         
-        g.drawImage(backgroundImage, 0, 0, this.getWidth(), this.getHeight(), this);
+        g.drawImage(backgroundImage, 0, 0, backgroundImage.getWidth(null), backgroundImage.getHeight(null), this);
         int startX = Config.startX;
         int startY = Config.startY;
         int dist = Config.distPoint2Point;
@@ -51,6 +53,10 @@ public class ChessBoardCanvas extends javax.swing.JPanel {
                        g.drawImage(chessPieces[i][j].Icon, x, y, chessPieces[i][j].Icon.getWidth(null), chessPieces[i][j].Icon.getWidth(null), this);
                    }
             }
+        }
+        Point p = ChessWindow.chessBoarder.getPoint();
+        if (p != null) {
+            g.drawImage(selectFrame, startX + dist * p.x, startY + dist * p.y, selectFrame.getWidth(null), selectFrame.getHeight(null), this);
         }
     }
     

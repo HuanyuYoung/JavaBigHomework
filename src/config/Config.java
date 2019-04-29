@@ -11,7 +11,8 @@ package config;
  * @author heyanbai
  */
 public class Config {
-    static public int startX = 18;
-    static public int startY = 18;
-    static public int distPoint2Point = 100;
+    static public int startX = 14;
+    static public int startY = 14;
+    static public int distPoint2Point = 75;
+    // TODO : define and initialize haveWay[][][][] map;
 }
